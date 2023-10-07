@@ -16,7 +16,22 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
-  registerEvents() {
+  registerEvents() { 
+
+		let current = this;
+
+    function SymbolResult(e) {   
+      let WordSymbol = current.currentSymbol.textContent.toUpperCase();
+      let inputedSymbol = String.fromCharCode(e.keyCode);
+        if (WordSymbol == inputedSymbol) {
+          current.success();
+        } else {
+          current.fail();
+        }  
+      }
+    document.addEventListener("keydown", SymbolResult);
+  }
+    
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -25,7 +40,7 @@ class Game {
       При неправильном вводе символа - this.fail();
       DOM-элемент текущего символа находится в свойстве this.currentSymbol.
      */
-  }
+  
 
   success() {
     if(this.currentSymbol.classList.contains("symbol_current")) this.currentSymbol.classList.remove("symbol_current");
