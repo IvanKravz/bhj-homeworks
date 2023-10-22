@@ -11,23 +11,31 @@ function addTask(task) {
         <a href="#" class="task__remove">&times;</a>
         </div>`
     
-    tasksList.insertAdjacentHTML("beforeEnd", taskHTML)
-}
+    tasksList.insertAdjacentHTML("beforeEnd", taskHTML);
+};
 
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
     if(text.value.trim()) {
-        addTask(text.value)
-        text.value = ''
+        addTask(text.value);
+        text.value = ''; 
+        removeTask()
     }
-})
+});
 
 function removeTask() {
     const remove = document.querySelectorAll('.task__remove');
-    remove.forEach((elem) => {
-        elem.addEventListener('click', (event) => {
-            event.preventDefault()
-            console.log(1)
-            elem.parentElement.remove()
-        })
+    remove.forEach(el => {
+        el.addEventListener('click', (event) => {
+            event.preventDefault();
+            dd = event.target.closest('.task')
+            dd.remove();
+        }) 
     })
 }
+    
+            
+        
+        
+            
+        

@@ -4,7 +4,9 @@ const inc = document.querySelectorAll('.product__quantity-control_inc');
 dec.forEach((elem) => {
     elem.addEventListener('click', () => {
         let dec = elem.parentElement.querySelector('.product__quantity-value')
-        if (dec.textContent <= 0) return
+        if (dec.textContent <= 1) {
+            return
+        }
         dec.textContent--
         })
     })
@@ -33,8 +35,8 @@ basket.forEach(element => {
             <img class="cart__product-image" src=${image}>
             <div class="cart__product-count">${quantity}</div>`;
         
-        let cartProduct = cartProducts.querySelectorAll('.cart__product');
-        let idProduct = Array.from(cartProduct).map(elem => elem.getAttribute('data-id')) 
+        const cartProduct = cartProducts.querySelectorAll('.cart__product');
+        const idProduct = Array.from(cartProduct).map(elem => elem.getAttribute(`data-id`));
 
         if (!idProduct.includes(id)) {
             cartProducts.append(createElement);

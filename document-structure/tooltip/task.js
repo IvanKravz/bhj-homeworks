@@ -23,11 +23,8 @@ title.forEach((elem) => {
         tooltipElem.innerHTML = elemTitle
         tooltipElem.classList = "tooltip tooltip_active"
       
-        elem.insertAdjacentElement("afterBegin", tooltipElem)
-        
+        elem.insertAdjacentElement("afterEnd", tooltipElem)
         positionElement(tooltipElem)
-        
-        console.log(tooltipElem)
         }
 
         function positionElement (element) {
