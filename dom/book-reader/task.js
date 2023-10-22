@@ -10,19 +10,22 @@ books.forEach(elem => {
         })
 
         elem.classList.add("font-size_active")
-    
-        const book = document.querySelector(".book");
         
-        const size = elem.getAttribute("data-size");
+
+        const reader = document.querySelector(".book");
+        const size = event.target.dataset.size;
         
-        if (size === 'small') {
-            book.className = "book book_fs-small"
-        }
-        if (size === 'big') {
-            book.className = "book book_fs-big"
-        }
-        if(!size) {
-            book.className = "book" 
-        }
+        if (size) {
+            reader.className = `book book_fs-${size}`;
+        } else {
+            reader.className = "book";
+        }  
+        console.log(size)    
     })
 });
+
+
+
+
+        
+  
