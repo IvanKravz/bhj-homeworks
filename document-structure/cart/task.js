@@ -1,4 +1,3 @@
-
 const dec = document.querySelectorAll('.product__quantity-control_dec');
 const inc = document.querySelectorAll('.product__quantity-control_inc');
 
@@ -9,7 +8,6 @@ dec.forEach((elem) => {
         dec.textContent--
         })
     })
-// })
 
 inc.forEach((elem) => {
     elem.addEventListener('click', () => {
@@ -17,7 +15,6 @@ inc.forEach((elem) => {
         inc.textContent++
     })
 })
-
 
 const basket = document.querySelectorAll('.product__add');
 
@@ -43,10 +40,8 @@ basket.forEach(element => {
             cartProducts.append(createElement);
         } else {
             let currentProduct = document.querySelector(`.cart__product[data-id="${id}"]`);
-            let quantityProduct = Number(currentProduct.querySelector('.cart__product-count').textContent)
-            
-            currentProduct.querySelector('.cart__product-count').textContent = quantity + quantityProduct
+            let quantityProduct = Number(currentProduct.querySelector('.cart__product-count').textContent);
+            currentProduct.querySelector('.cart__product-count').textContent = quantity + quantityProduct;
         }
     })
 })
-
