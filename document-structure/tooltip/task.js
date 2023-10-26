@@ -1,30 +1,31 @@
-const title = document.querySelectorAll(".has-tooltip")
+const title = document.querySelectorAll(".has-tooltip");
 
 title.forEach((elem) => {
     elem.addEventListener("click", (event) => {
-        event.preventDefault()
+        event.preventDefault();
         
         const tooltip = event.target.querySelector(".tooltip");
         const tolltipActive = document.querySelector(".tooltip_active");
 
         if (tooltip && tooltip.classList.contains('tooltip_active')) {
-            tooltip.classList.remove('tooltip_active')
+            tooltip.remove('tooltip_active');
 
         } else if (tooltip && tolltipActive) {
-            tolltipActive.classList.remove('tooltip_active')
-            tooltip.classList.add('tooltip_active')
+            tolltipActive.classList.remove('tooltip_active');
+            tooltip.classList.add('tooltip_active');
         } else {
             if (tolltipActive) {
-            tolltipActive.classList.remove('tooltip_active')
+            tolltipActive.classList.remove('tooltip_active');
         }
 
-        elemTitle = elem.title
-        const tooltipElem = document.createElement('div')
-        tooltipElem.innerHTML = elemTitle
-        tooltipElem.classList = "tooltip tooltip_active"
+        elemTitle = event.target.title;
+        const tooltipElem = document.createElement('div');
+        tooltipElem.innerHTML = elemTitle;
+        tooltipElem.classList = "tooltip tooltip_active";
       
-        elem.insertAdjacentElement("afterEnd", tooltipElem)
-        positionElement(tooltipElem)
+        event.target.insertAdjacentElement("afterbegin", tooltipElem);
+        
+        positionElement(tooltipElem);
         }
 
         function positionElement (element) {

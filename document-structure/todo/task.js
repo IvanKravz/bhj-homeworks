@@ -28,8 +28,7 @@ function removeTask() {
     remove.forEach(el => {
         el.addEventListener('click', (event) => {
             event.preventDefault();
-            dd = event.target.closest('.task')
-            dd.remove();
+            event.target.closest('.task').remove();
         }) 
     })
 }
