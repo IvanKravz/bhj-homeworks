@@ -9,32 +9,24 @@ function addTask(task) {
             ${task}
             </div>
         <a href="#" class="task__remove">&times;</a>
-        </div>`
+        </div>`;
     
     tasksList.insertAdjacentHTML("beforeEnd", taskHTML);
 };
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+
     if(text.value.trim()) {
         addTask(text.value);
         text.value = ''; 
-        removeTask()
     }
 });
 
-function removeTask() {
-    const remove = document.querySelectorAll('.task__remove');
-    remove.forEach(el => {
-        el.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.target.closest('.task').remove();
-        }) 
-    })
-}
-    
-            
-        
-        
-            
+tasksList.addEventListener('click', (event) => {
+    let linkRemove = event.target;
+    if (linkRemove.classList.contains('task__remove')) {
+        linkRemove.closest('.task').remove();
+    }
+});          
         
