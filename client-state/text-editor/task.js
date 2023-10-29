@@ -1,6 +1,19 @@
-const editor = document.querySelector('.card')
-const name = 'name'
-localStorage.setItem('text', editor)
+const editor = document.getElementById('editor');
 
+editor.addEventListener('input', saveText);
 
-console.log(localStorage.getItem('text'))
+function saveText() {
+    localStorage.setItem('text', editor.value);
+}
+
+window.addEventListener('load', loadText);
+
+function loadText() {
+    editor.value = localStorage.getItem('text');
+}
+
+const clearBtn = document.querySelector('.clearBtn');
+
+clearBtn.addEventListener('click', () => {
+    editor.value = ''
+});

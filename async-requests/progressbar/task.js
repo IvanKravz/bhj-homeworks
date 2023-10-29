@@ -7,7 +7,6 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     xhr.open('POST', url);
     
-
     const progress = document.getElementById('progress');
     
     xhr.upload.addEventListener('progress', (e) => {
@@ -24,6 +23,6 @@ form.addEventListener('submit', (event) => {
         }
     }
     
-    const formPost = new FormData(form)
-    xhr.send(formPost)
+    const formPost = new FormData(form);
+    xhr.send(formPost);
     })
