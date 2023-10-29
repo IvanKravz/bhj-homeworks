@@ -4,12 +4,12 @@ function windowWelcome(userId) {
     const welcome = document.querySelector('.welcome');
     const idWelcome = document.getElementById('user_id');
     const signin = document.getElementById('signin');
-    signin.classList.remove('signin_active')
+    signin.classList.remove('signin_active');
     
-    idWelcome.textContent = userId
+    idWelcome.textContent = userId;
     welcome.classList.add('welcome_active');
     localStorage.setItem('user_id', userId);
-}
+};
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -20,26 +20,23 @@ form.addEventListener('submit', (event) => {
     xhr.open('POST', url);
 
     const formPOST = new FormData(form);
-
+    xhr.responseType = 'json';
+    
     xhr.onload = function () {
         if (xhr.status == 201) {
-            const data = JSON.parse(xhr.response);
-            windowWelcome(data.user_id);
+            form.reset();
+            windowWelcome(xhr.response.user_id);
         } else {
-            alert('Неверный логин/пароль')
+            alert('Неверный логин/пароль');
         }
     };
     
-    xhr.send(formPOST)
+    xhr.send(formPOST);
 });
 
-
-
-
-
-
-
-
-
-
-
+window.addEventListener('load', () => {
+    let idUser = localStorage.getItem('user_id');
+    if (user_id) {
+        windowWelcome(idUser);
+    }
+});

@@ -15,5 +15,6 @@ function loadText() {
 const clearBtn = document.querySelector('.clearBtn');
 
 clearBtn.addEventListener('click', () => {
-    editor.value = ''
+    editor.value = '';
+    localStorage.removeItem('text');
 });
